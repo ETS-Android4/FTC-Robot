@@ -6,6 +6,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp(name="Mr Roboto Op Mode", group="TeleOp")
 public class MrRobotoOpMode extends OpMode {
+    public static void main(String[] args) {
+
+    }
 
     @Override
     public void init() {
