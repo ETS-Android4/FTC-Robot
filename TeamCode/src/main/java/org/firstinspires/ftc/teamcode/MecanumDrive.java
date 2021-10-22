@@ -4,15 +4,28 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.RobotInfo.DeviceMap;
+import org.firstinspires.ftc.teamcode.DeviceMap;
+import org.firstinspires.ftc.teamcode.utils.VersionInfo;
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-
-
-
+/**
+ * Mecanum drive for robot
+ *
+ * @author Washieu Anan
+ */
+@VersionInfo(
+        version = "1.0",
+        releaseDate = "10/22/2021",
+        since = "1.0",
+        contributors = {
+                "Washieu Anan"
+        }
+)
 public final class MecanumDrive {
 
-    public void move(DeviceMap map, double left_stick_x, double left_stick_y, double right_stick_x){
+    public void move(DeviceMap map, double left_stick_x, double left_stick_y, double right_stick_x)
+    {
         boolean swap = false;
         double LF = Range.clip(left_stick_y + left_stick_x + right_stick_x, -1, 1);
         double RF = Range.clip(left_stick_y - left_stick_x - right_stick_x, -1, 1);
@@ -25,12 +38,6 @@ public final class MecanumDrive {
         map.getRightTop().setPower(RF);
         map.getLeftBottom().setPower(LB);
         map.getRightBottom().setPower(RB);
-
-
-
-
-
-
     }
 
 }
