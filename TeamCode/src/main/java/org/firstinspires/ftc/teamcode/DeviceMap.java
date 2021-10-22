@@ -32,6 +32,11 @@ public final class DeviceMap
 
         this.driveMotors = new DcMotor[] {leftTop, rightTop, leftBottom, rightBottom};
 
+        leftTop.setDirection(DcMotorSimple.Direction.FORWARD);
+        leftBottom.setDirection(DcMotorSimple.Direction.FORWARD);
+        rightTop.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightBottom.setDirection(DcMotorSimple.Direction.REVERSE);
+
         // set same thing to each motor
         for (DcMotor motor : this.driveMotors)
         {
