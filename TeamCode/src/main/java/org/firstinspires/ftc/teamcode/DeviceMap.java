@@ -32,14 +32,11 @@ public final class DeviceMap
 
         this.driveMotors = new DcMotor[] {leftTop, rightTop, leftBottom, rightBottom};
 
-        leftTop.setDirection(DcMotorSimple.Direction.FORWARD);
-        leftBottom.setDirection(DcMotorSimple.Direction.FORWARD);
-        rightTop.setDirection(DcMotorSimple.Direction.FORWARD);
-        rightBottom.setDirection(DcMotorSimple.Direction.FORWARD);
-
         // set same thing to each motor
         for (DcMotor motor : this.driveMotors)
         {
+            motor.setDirection(DcMotorSimple.Direction.FORWARD);
+
             motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
