@@ -1,9 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.utils.VersionInfo;
+
+import org.firstinspires.ftc.teamcode.MecanumDrive;
 
 @VersionInfo(
         version = "1.0",
@@ -13,19 +16,20 @@ import org.firstinspires.ftc.teamcode.utils.VersionInfo;
                 "Washieu Anan"
         }
 )
+
 @TeleOp(name="Mr Roboto Op Mode", group="TeleOp")
 public class MrRobotoOpMode extends OpMode
 {
 
-    public static void main(String[] args)
-    {
-
-    }
+    public MecanumDrive mecanumDrive;
+    public DeviceMap map;
 
     @Override
     public void init()
     {
-
+        mecanumDrive = new MecanumDrive();
+        map = new DeviceMap();
+        map.init(hardwareMap);
     }
 
     @Override
@@ -37,7 +41,12 @@ public class MrRobotoOpMode extends OpMode
     @Override
     public void loop()
     {
+        double x = gamepad1.left_stick_x;
+        double y = gamepad1.left_stick_y;
+        double right_stick_x = -gamepad1.right_stick_x;
+        double multiplier = gamepad1.left_trigger + 1;
 
+        mecanumDrive.move(map, x / multiplier, y / multiplier, right_stick_x / multiplier);
     }
 
     @Override

@@ -40,7 +40,7 @@ public final class DeviceMap
         // set same thing to each motor
         for (DcMotor motor : this.driveMotors)
         {
-            motor.setDirection(DcMotorSimple.Direction.FORWARD);
+
 
             motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
