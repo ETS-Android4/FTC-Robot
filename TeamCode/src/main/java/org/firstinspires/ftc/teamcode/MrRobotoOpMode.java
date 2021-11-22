@@ -47,6 +47,7 @@ public class MrRobotoOpMode extends OpMode
         double multiplier = gamepad1.left_trigger + 1;
 
         mecanumDrive.move(map, x / multiplier, y / multiplier, right_stick_x / multiplier);
+        map.getIntakeMotor().setPower(gamepad2.left_stick_y);
     }
 
     @Override
