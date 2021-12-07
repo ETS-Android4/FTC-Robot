@@ -6,6 +6,9 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import java.util.ArrayList;
 
+/**
+ * Holds all devices.
+ */
 public final class DeviceMap
 {
 
@@ -15,8 +18,6 @@ public final class DeviceMap
     private DcMotor rightBottom;
     private DcMotor[] driveMotors;
 
-    private DcMotor intakeMotor;
-
     HardwareMap map = null;
 
     // class
@@ -25,7 +26,6 @@ public final class DeviceMap
     public void init(HardwareMap map)
     {
         setUpDriveMotors(map);
-        setUpIntakeMotors(map);
     }
 
     private void setUpDriveMotors(HardwareMap map)
@@ -51,20 +51,9 @@ public final class DeviceMap
             motor.setPower(0);
         }
     }
-    private void setUpIntakeMotors(HardwareMap map)
-    {
-        intakeMotor = map.get(DcMotor.class, "intakeMotor");
-        intakeMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-
-        intakeMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        intakeMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        intakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        intakeMotor.setPower(0);
-
-    }
 
 
-    // getters
+    // Getters
 
     public DcMotor getLeftTop()
     {
@@ -84,11 +73,6 @@ public final class DeviceMap
     public DcMotor getRightBottom()
     {
         return rightBottom;
-    }
-
-    public DcMotor getIntakeMotor()
-    {
-        return intakeMotor;
     }
 
 }

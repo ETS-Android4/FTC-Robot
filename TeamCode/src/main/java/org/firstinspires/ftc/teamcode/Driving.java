@@ -1,26 +1,14 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.firstinspires.ftc.teamcode.utils.VersionInfo;
-
-/**
- * Just for driving
- */
-@VersionInfo(
-        version = "1.0",
-        releaseDate = "10/22/2021",
-        since = "1.0",
-        contributors = {
-                "Washieu Anan"
-        }
-)
 @TeleOp(name = "TeleOp Demo")
+@Disabled
 public class Driving extends LinearOpMode
 {
-
 
     @Override
     public void runOpMode()
