@@ -1,78 +1,41 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import java.util.ArrayList;
 
-/**
- * Holds all devices.
- */
-public final class DeviceMap
-{
 
-    private DcMotor leftTop;
-    private DcMotor rightTop;
-    private DcMotor leftBottom;
-    private DcMotor rightBottom;
-    private DcMotor[] driveMotors;
+public class DeviceMap {
+    public DcMotorEx leftFront = null;
+    public DcMotorEx leftBack = null;
+    public DcMotorEx rightFront = null;
+    public DcMotorEx rightBack = null;
+    private DcMotorEx[] driveMotors;
 
-    HardwareMap map = null;
 
-    // class
-    public DeviceMap() {}
+    HardwareMap hwMap = null;
 
-    public void init(HardwareMap map)
-    {
-        setUpDriveMotors(map);
-    }
+    public void init(HardwareMap hwMap) {
+        // Initialize variables for each motor
+        leftFront = hwMap.get(DcMotorEx.class, "left_front");
+        leftBack = hwMap.get(DcMotorEx.class, "left_back");
+        rightFront = hwMap.get(DcMotorEx.class, "right_front");
+        rightBack = hwMap.get(DcMotorEx.class, "right_back");
 
-    private void setUpDriveMotors(HardwareMap map)
-    {
-        leftTop = map.get(DcMotor.class, "leftTop");
-        rightTop = map.get(DcMotor.class, "rightTop");
-        leftBottom = map.get(DcMotor.class, "leftBottom");
-        rightBottom = map.get(DcMotor.class, "rightBottom");
+        this.driveMotors = new DcMotorEx[] {leftFront, leftBack, rightFront, rightBack};
+        leftFront.setDirection(DcMotor.Direction.FORWARD);
+        leftBack.setDirection(DcMotor.Direction.FORWARD);
+        rightFront.setDirection(DcMotor.Direction.REVERSE);
+        rightBack.setDirection(DcMotor.Direction.REVERSE);
 
-        this.driveMotors = new DcMotor[] {leftTop, rightTop, leftBottom, rightBottom};
-
-        leftTop.setDirection(DcMotorSimple.Direction.FORWARD);
-        leftBottom.setDirection(DcMotorSimple.Direction.FORWARD);
-        rightTop.setDirection(DcMotorSimple.Direction.REVERSE);
-        rightBottom.setDirection(DcMotorSimple.Direction.REVERSE);
-
-        // set same thing to each motor
-        for (DcMotor motor : this.driveMotors)
-        {
-            motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        for(DcMotorEx motor: this.driveMotors){
+            motor.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            motor.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+            motor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
             motor.setPower(0);
         }
     }
-
-
-    // Getters
-
-    public DcMotor getLeftTop()
-    {
-        return leftTop;
-    }
-
-    public DcMotor getRightTop()
-    {
-        return rightTop;
-    }
-
-    public DcMotor getLeftBottom()
-    {
-        return leftBottom;
-    }
-
-    public DcMotor getRightBottom()
-    {
-        return rightBottom;
-    }
-
 }
