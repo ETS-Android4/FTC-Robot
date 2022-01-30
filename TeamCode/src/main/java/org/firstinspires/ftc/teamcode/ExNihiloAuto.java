@@ -30,10 +30,10 @@ public class ExNihiloAuto extends LinearOpMode {
         sleep(3000);
 
         // Turn in warehouse for 2 sec
-        robot.leftFront.setPower(FORWARD_SPEED);
-        robot.leftBack.setPower(FORWARD_SPEED);
-        robot.rightFront.setPower(-FORWARD_SPEED);
-        robot.rightBack.setPower(-FORWARD_SPEED);
+        robot.leftFront.setPower(TURN_SPEED);
+        robot.leftBack.setPower(TURN_SPEED);
+        robot.rightFront.setPower(-TURN_SPEED);
+        robot.rightBack.setPower(-TURN_SPEED);
         sleep(2000);
 
         // Move forward in warehouse for 2 sec
